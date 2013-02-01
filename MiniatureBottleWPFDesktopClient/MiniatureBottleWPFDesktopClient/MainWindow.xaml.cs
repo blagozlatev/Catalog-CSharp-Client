@@ -65,7 +65,29 @@ namespace MiniatureBottleWPFDesktopClient
 
         private void btnSave_OnClick(object sender, RoutedEventArgs e)
         {
+            string errorMessage = string.Empty;
+            if (txtID.Text == string.Empty)
+            {
+                errorMessage += "You didn't enter an ID!\n";
+            }
 
+            if (txtName.Text == string.Empty)
+            {
+                errorMessage += "You didn't enter a name!\n";
+            }
+            if (!(errorMessage == string.Empty))
+            {
+                MessageBox.Show(errorMessage, "Error!");
+            }
+        }
+
+        private bool CheckTextFields(TextBox txtBox)
+        {
+            if (txtBox.Text == string.Empty){
+                MessageBox.Show("Error", "You have left a field empty!");
+                return false;
+            }
+            return true;
         }
     }
 }
