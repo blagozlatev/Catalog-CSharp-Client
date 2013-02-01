@@ -410,6 +410,7 @@
                         <TextBox
                             Grid.Column="0"
                             Margin="5,5,0,5"
+                            IsReadOnly="True"
                             Name="txtBrowse" />
 
                         <Button

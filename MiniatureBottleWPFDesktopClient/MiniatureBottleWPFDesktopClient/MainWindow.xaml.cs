@@ -38,6 +38,7 @@ namespace MiniatureBottleWPFDesktopClient
                 string directory = openFile.FileName;
                 BitmapImage img = new BitmapImage(new Uri(directory));
                 imgBottle.Source = img;
+                txtBrowse.Text = directory;
             }            
         }
 
