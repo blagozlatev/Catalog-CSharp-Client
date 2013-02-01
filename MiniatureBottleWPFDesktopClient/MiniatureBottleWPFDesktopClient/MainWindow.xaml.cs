@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Win32;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -27,8 +28,17 @@ namespace MiniatureBottleWPFDesktopClient
 
         private void btnBrowse_OnClick(object sender, RoutedEventArgs e)
         {
-            BitmapImage img = new BitmapImage(new Uri(@"C:\Users\Blagovest Zlatev\Downloads\lala\lala.jpg"));
-            imgBottle.Source = img;
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.FileName = "BottleImage";
+            openFile.DefaultExt = ".jpg";
+            openFile.Filter = "Image Files (*.bmp, *.jpg, *.jpeg)|*.bmp;*.jpg;*.jpeg";
+            var fileFound = openFile.ShowDialog();
+            if (fileFound == true)
+            {
+                string directory = openFile.FileName;
+                BitmapImage img = new BitmapImage(new Uri(directory));
+                imgBottle.Source = img;
+            }            
         }
 
         private void btnClear_OnClick(object sender, RoutedEventArgs e)
