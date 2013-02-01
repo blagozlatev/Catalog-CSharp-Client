@@ -44,7 +44,23 @@ namespace MiniatureBottleWPFDesktopClient
 
         private void btnClear_OnClick(object sender, RoutedEventArgs e)
         {
-
+            txtAge.Clear();
+            txtAlcohol.Clear();
+            txtAlcoholType.Clear();
+            txtBrowse.Clear();
+            txtCity.Clear();
+            txtColor.Clear();
+            txtContent.Clear();
+            txtCountry.Clear();
+            txtID.Clear();
+            txtManufacturer.Clear();
+            txtMaterial.Clear();
+            txtName.Clear();
+            txtNote.Clear();
+            txtShape.Clear();
+            txtShell.Clear();
+            cmbContinent.SelectedIndex = -1;
+            imgBottle.Source = null;
         }
 
         private void btnSave_OnClick(object sender, RoutedEventArgs e)
