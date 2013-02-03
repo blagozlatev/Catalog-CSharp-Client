@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Win32;
+using System.Data;
+using System.Data.SqlServerCe;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -13,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using System.Configuration;
 
 namespace MiniatureBottleWPFDesktopClient
 {
@@ -43,7 +47,7 @@ namespace MiniatureBottleWPFDesktopClient
         }
 
         private void btnClear_OnClick(object sender, RoutedEventArgs e)
-        {
+        {            
             txtAge.Clear();
             txtAlcohol.Clear();
             txtAlcoholType.Clear();
@@ -79,15 +83,17 @@ namespace MiniatureBottleWPFDesktopClient
             {
                 MessageBox.Show(errorMessage, "Error!");
             }
-        }
 
-        private bool CheckTextFields(TextBox txtBox)
-        {
-            if (txtBox.Text == string.Empty){
-                MessageBox.Show("Error", "You have left a field empty!");
-                return false;
-            }
-            return true;
-        }
+            //Test for SQL CE with a simple Insert Query for a remote LocalDB 
+            
+            SqlCeConnection sqlCn = new SqlCeConnection();
+            sqlCn.ConnectionString = ConfigurationManager.ConnectionStrings["MiniatureBottles"].ConnectionString;
+            sqlCn.Open();
+            SqlCeCommand cmd = new SqlCeCommand(string.Format("INSERT INTO Bottle (ID, Name, Age) VALUES ('{0}', '{1}', '{2}')", txtID.Text, txtName.Text, txtAge.Text));
+            cmd.Connection = sqlCn;            
+            cmd.ExecuteNonQuery();
+            sqlCn.Close();            
+
+        }        
     }
 }

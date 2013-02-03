@@ -392,10 +392,10 @@
 
                         <RowDefinition Height="5*" />
                     </Grid.RowDefinitions>
-
+                    
                     <Image
                         Margin="5"
-                        Name="imgBottle"
+                        Name="imgBottle"                        
                         Stretch="Uniform" />
 
                     <Grid Grid.Row="1" >
