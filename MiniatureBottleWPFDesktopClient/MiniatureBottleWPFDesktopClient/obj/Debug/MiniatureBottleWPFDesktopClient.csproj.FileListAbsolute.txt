@@ -24,3 +24,7 @@ D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopCli
 D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\MiniatureBottleWPFDesktopClient.g.resources
 D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\MiniatureBottleWPFDesktopClient.Properties.Resources.resources
 D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\MiniatureBottleWPFDesktopClient.csproj.GenerateResource.Cache
+D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\bin\Debug\Newtonsoft.Json.dll
+D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\bin\Debug\Newtonsoft.Json.xml
+D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\bin\Debug\System.Net.Http.Formatting.dll
+D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\bin\Debug\System.Net.Http.Formatting.xml

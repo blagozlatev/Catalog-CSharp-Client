@@ -17,6 +17,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Configuration;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace MiniatureBottleWPFDesktopClient
 {
@@ -63,7 +69,7 @@ namespace MiniatureBottleWPFDesktopClient
             txtNote.Clear();
             txtShape.Clear();
             txtShell.Clear();
-            cmbContinent.SelectedIndex = -1;
+            cmbContinent.SelectedIndex = -1;            
             imgBottle.Source = null;
         }
 
@@ -84,16 +90,59 @@ namespace MiniatureBottleWPFDesktopClient
                 MessageBox.Show(errorMessage, "Error!");
             }
 
-            //Test for SQL CE with a simple Insert Query for a remote LocalDB 
-            
-            SqlCeConnection sqlCn = new SqlCeConnection();
-            sqlCn.ConnectionString = ConfigurationManager.ConnectionStrings["MiniatureBottles"].ConnectionString;
-            sqlCn.Open();
-            SqlCeCommand cmd = new SqlCeCommand(string.Format("INSERT INTO Bottle (ID, Name, Age) VALUES ('{0}', '{1}', '{2}')", txtID.Text, txtName.Text, txtAge.Text));
-            cmd.Connection = sqlCn;            
-            cmd.ExecuteNonQuery();
-            sqlCn.Close();            
 
+            var b = new Bottle();
+            b.Age = int.Parse(txtAge.Text);
+            b.Alcohol = txtAlcohol.Text;
+            b.AlcoholType = txtAlcoholType.Text;
+            b.City = txtCity.Text;
+            b.Color = txtColor.Text;
+            b.Content = txtContent.Text;
+            b.Continent = "North America";
+            b.Country = txtCountry.Text;
+            b.ID = int.Parse(txtID.Text);
+            b.Manufacturer = txtManufacturer.Text;
+            b.Material = txtMaterial.Text;
+            b.Name = txtName.Text;
+            b.Note = txtNote.Text;
+            b.Shape = txtShape.Text;
+            b.Shell = txtShell.Text;
+
+            string json = JsonConvert.SerializeObject(b);
+
+            WebRequestinJson(new Uri("http://localhost:47506/JSON/Post"), json);
         }        
+
+        public string WebRequestinJson(Uri url, string postData)
+        {
+            string ret = string.Empty;
+
+            StreamWriter requestWriter;
+
+            var webRequest = System.Net.WebRequest.Create(url) as HttpWebRequest;
+            if (webRequest != null)
+            {
+                webRequest.Method = "POST";
+                webRequest.ContentType = "application/json";
+                //POST the data.
+                using (requestWriter = new StreamWriter(webRequest.GetRequestStream()))
+                {
+                    requestWriter.Write(postData);
+                }
+            }
+
+            try
+            {
+                HttpWebResponse resp = (HttpWebResponse) webRequest.GetResponse();
+                Stream resStream = resp.GetResponseStream();
+                StreamReader reader = new StreamReader(resStream);
+                ret = reader.ReadToEnd();
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }            
+        }
     }
 }
