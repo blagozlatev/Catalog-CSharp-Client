@@ -17,8 +17,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Configuration;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -108,9 +106,12 @@ namespace MiniatureBottleWPFDesktopClient
             b.Shape = txtShape.Text;
             b.Shell = txtShell.Text;
 
-            string json = JsonConvert.SerializeObject(b);
+            string strSend = b.Age + "#" + b.Alcohol + "#" + b.AlcoholType + "#" +
+                        b.City + "#" + b.Color + "#" + b.Content + "#" + b.Continent + "#"
+                        + b.Country + "#" + b.ID + "#" + b.Manufacturer + "#" + b.Material
+                         + "#" + b.Name + "#" + b.Note + "#" + b.Shape + "#" + b.Shell + "\n";
 
-            WebRequestinJson(new Uri("http://localhost:47506/JSON/Post"), json);
+            txtBrowse.Text = WebRequestinJson(new Uri("http://localhost:47506/Serialized/Post"),strSend); 
         }        
 
         public string WebRequestinJson(Uri url, string postData)
@@ -123,7 +124,7 @@ namespace MiniatureBottleWPFDesktopClient
             if (webRequest != null)
             {
                 webRequest.Method = "POST";
-                webRequest.ContentType = "application/json";
+                webRequest.ContentType = "text/plain";
                 //POST the data.
                 using (requestWriter = new StreamWriter(webRequest.GetRequestStream()))
                 {
