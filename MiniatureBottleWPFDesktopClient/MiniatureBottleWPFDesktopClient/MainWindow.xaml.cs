@@ -89,7 +89,7 @@ namespace MiniatureBottleWPFDesktopClient
             }
 
 
-            var b = new Bottle();
+            Bottle b = new Bottle();
             b.Age = int.Parse(txtAge.Text);
             b.Alcohol = txtAlcohol.Text;
             b.AlcoholType = txtAlcoholType.Text;
@@ -106,26 +106,20 @@ namespace MiniatureBottleWPFDesktopClient
             b.Shape = txtShape.Text;
             b.Shell = txtShell.Text;
 
-            string strSend = b.Age + "#" + b.Alcohol + "#" + b.AlcoholType + "#" +
-                        b.City + "#" + b.Color + "#" + b.Content + "#" + b.Continent + "#"
-                        + b.Country + "#" + b.ID + "#" + b.Manufacturer + "#" + b.Material
-                         + "#" + b.Name + "#" + b.Note + "#" + b.Shape + "#" + b.Shell + "\n";
+            txtBrowse.Text = WebRequestPostBottle(new Uri("http://miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize()); 
+        }
 
-            txtBrowse.Text = WebRequestinJson(new Uri("http://localhost:47506/Serialized/Post"),strSend); 
-        }        
-
-        public string WebRequestinJson(Uri url, string postData)
+        public string WebRequestPostBottle(Uri url, string postData)
         {
             string ret = string.Empty;
 
             StreamWriter requestWriter;
 
-            var webRequest = System.Net.WebRequest.Create(url) as HttpWebRequest;
+            HttpWebRequest webRequest = WebRequest.Create(url) as HttpWebRequest;
             if (webRequest != null)
             {
                 webRequest.Method = "POST";
-                webRequest.ContentType = "text/plain";
-                //POST the data.
+                webRequest.ContentType = "text/plain";                
                 using (requestWriter = new StreamWriter(webRequest.GetRequestStream()))
                 {
                     requestWriter.Write(postData);
@@ -134,7 +128,7 @@ namespace MiniatureBottleWPFDesktopClient
 
             try
             {
-                HttpWebResponse resp = (HttpWebResponse) webRequest.GetResponse();
+                HttpWebResponse resp = webRequest.GetResponse() as HttpWebResponse;
                 Stream resStream = resp.GetResponseStream();
                 StreamReader reader = new StreamReader(resStream);
                 ret = reader.ReadToEnd();
