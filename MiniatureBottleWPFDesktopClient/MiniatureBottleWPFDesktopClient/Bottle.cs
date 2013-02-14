@@ -58,7 +58,15 @@ namespace MiniatureBottleWPFDesktopClient
             Bottle bottle = new Bottle();
             try
             {
-                bottle.Age = int.Parse(split[0]);
+                int testValue;
+                if (int.TryParse(split[0], out testValue))
+                {
+                    bottle.Age = int.Parse(split[0]);
+                }
+                else
+                {
+                    throw new Exception("Invalid value for Age!");
+                }
                 bottle.Alcohol = split[1];
                 bottle.AlcoholType = split[2];
                 bottle.City = split[3];
@@ -66,7 +74,14 @@ namespace MiniatureBottleWPFDesktopClient
                 bottle.Content = split[5];
                 bottle.Continent = split[6];
                 bottle.Country = split[7];
-                bottle.ID = int.Parse(split[8]);
+                if (int.TryParse(split[8], out testValue))
+                {
+                    bottle.ID = int.Parse(split[8]);
+                }
+                else
+                {
+                    throw new Exception("Invalid value for ID!");
+                }
                 bottle.Manufacturer = split[9];
                 bottle.Material = split[10];
                 bottle.Name = split[11];

@@ -12,6 +12,6 @@ namespace MiniatureBottleWPFDesktopClient
         public EmptyFieldException(string message) : base(message)
         {
 
-        }
+        }        
     }    
 }

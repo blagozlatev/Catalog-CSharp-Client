@@ -24,6 +24,7 @@ using System.Net.Http.Headers;
 
 namespace MiniatureBottleWPFDesktopClient
 {
+    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -44,35 +45,43 @@ namespace MiniatureBottleWPFDesktopClient
             if (fileFound == true)
             {
                 string directory = openFile.FileName;
-                BitmapImage img = new BitmapImage(new Uri(directory));
+                BitmapImage img = new BitmapImage(new Uri(directory));                
                 imgBottle.Source = img;
                 txtBrowse.Text = directory;
             }            
         }
 
         private void btnClear_OnClick(object sender, RoutedEventArgs e)
-        {            
-            txtAge.Clear();
-            txtAlcohol.Clear();
-            txtAlcoholType.Clear();
-            txtBrowse.Clear();
-            txtCity.Clear();
-            txtColor.Clear();
-            txtContent.Clear();
-            txtCountry.Clear();
-            txtID.Clear();
-            txtManufacturer.Clear();
-            txtMaterial.Clear();
-            txtName.Clear();
-            txtNote.Clear();
-            txtShape.Clear();
-            txtShell.Clear();
-            cmbContinent.SelectedIndex = -1;            
+        {
+            txtAge.Text = string.Empty;
+            txtAlcohol.Text = string.Empty;
+            txtAlcoholType.Text = string.Empty;
+            txtBrowse.Text = string.Empty;
+            txtCity.Text = string.Empty;
+            txtColor.Text = string.Empty;
+            txtContent.Text = string.Empty;
+            txtCountry.Text = string.Empty;
+            txtID.Text = string.Empty;
+            txtManufacturer.Text = string.Empty;
+            txtMaterial.Text = string.Empty;
+            txtName.Text = string.Empty;
+            txtNote.Text = string.Empty;
+            txtShape.Text = string.Empty;
+            txtShell.Text = string.Empty;
+            cmbContinent.SelectedIndex = -1;
             imgBottle.Source = null;
         }
 
         private void btnSave_OnClick(object sender, RoutedEventArgs e)
         {
+            Dictionary<int, string> continents = new Dictionary<int, string>() {
+                {0, "Africa"},
+                {1, "Asia"},
+                {2, "Australia"},
+                {3, "Europe"},
+                {4, "North America"},
+                {5, "South America"}
+            };
             string errorMessage = string.Empty;
             if (txtID.Text == string.Empty)
             {
@@ -90,21 +99,43 @@ namespace MiniatureBottleWPFDesktopClient
 
 
             Bottle b = new Bottle();
-            b.Age = int.Parse(txtAge.Text);
-            b.Alcohol = txtAlcohol.Text;
-            b.AlcoholType = txtAlcoholType.Text;
-            b.City = txtCity.Text;
-            b.Color = txtColor.Text;
-            b.Content = txtContent.Text;
-            b.Continent = "North America";
-            b.Country = txtCountry.Text;
-            b.ID = int.Parse(txtID.Text);
-            b.Manufacturer = txtManufacturer.Text;
-            b.Material = txtMaterial.Text;
-            b.Name = txtName.Text;
-            b.Note = txtNote.Text;
-            b.Shape = txtShape.Text;
-            b.Shell = txtShell.Text;
+            try
+            {                
+                int testValue;
+                if (int.TryParse(txtAge.Text, out testValue))
+                {
+                    b.Age = int.Parse(txtAge.Text);
+                }
+                else
+                {
+                    throw new Exception("Invalid value for Age!");
+                }
+                b.Alcohol = txtAlcohol.Text;
+                b.AlcoholType = txtAlcoholType.Text;
+                b.City = txtCity.Text;
+                b.Color = txtColor.Text;
+                b.Content = txtContent.Text;
+                b.Continent = continents[cmbContinent.SelectedIndex];
+                b.Country = txtCountry.Text;
+                if (int.TryParse(txtID.Text, out testValue))
+                {
+                    b.ID = int.Parse(txtID.Text);
+                }
+                else
+                {
+                    throw new Exception("Invalid value for ID!");
+                }
+                b.Manufacturer = txtManufacturer.Text;
+                b.Material = txtMaterial.Text;
+                b.Name = txtName.Text;
+                b.Note = txtNote.Text;
+                b.Shape = txtShape.Text;
+                b.Shell = txtShell.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
 
             txtBrowse.Text = WebRequestPostBottle(new Uri("http://miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize()); 
         }
