@@ -1,7 +1,9 @@
 ﻿<Window xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Height="420"
-    MinHeight="420"
+    Height="430"
+    MinHeight="430"
     MinWidth="1050"
+    MaxHeight="430"
+    MaxWidth="1050"
     Width="1050"
     Title="MainWindow"    
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -27,9 +29,9 @@
 
             <Grid.RowDefinitions>
 
-                <RowDefinition />
+                <RowDefinition Height="54*" />
 
-                <RowDefinition />
+                <RowDefinition Height="79*" />
             </Grid.RowDefinitions>
 
             <GroupBox Margin="5" >
@@ -82,28 +84,32 @@
                         Grid.Column="1"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtAlcoholType" />
+                        Name="txtAlcoholType"
+                        Height="22px"/>
 
                     <TextBox
                         Grid.Column="1"
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtAlcohol" />
+                        Name="txtAlcohol"
+                        Height="22px"/>
 
                     <TextBox
                         Grid.Column="1"
                         Grid.Row="2"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtContent" />
+                        Name="txtContent"
+                        Height="22px"/>
 
                     <TextBox
                         Grid.Column="1"
                         Grid.Row="3"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtAge" />
+                        Name="txtAge"
+                        Height="22px"/>
                 </Grid>
             </GroupBox>
 
@@ -167,48 +173,55 @@
                     <Label
                         Content="Material:"
                         Grid.Column="0"
-                        Grid.Row="5" />
+                        Grid.Row="5" 
+                        />
 
                     <TextBox
                         Grid.Column="1"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtID" />
+                        Name="txtID"
+                        Height="22px"/>
 
                     <TextBox
                         Grid.Column="1"
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtShell" />
+                        Name="txtShell"
+                        Height="22px"/>
 
                     <TextBox
                         Grid.Column="1"
                         Grid.Row="2"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtName" />
+                        Name="txtName"
+                        Height="22px"/>
 
                     <TextBox
                         Grid.Column="1"
                         Grid.Row="3"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtShape" />
+                        Name="txtShape" 
+                        Height="22px"/>
 
                     <TextBox
                         Grid.Column="1"
                         Grid.Row="4"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtColor" />
+                        Name="txtColor" 
+                        Height="22px"/>
 
                     <TextBox
                         Grid.Column="1"
                         Grid.Row="5"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtMaterial" />
+                        Name="txtMaterial" 
+                        Height="22px"/>
                 </Grid>
             </GroupBox>
         </Grid>
@@ -217,9 +230,9 @@
 
             <Grid.RowDefinitions>
 
-                <RowDefinition />
+                <RowDefinition Height="54*" />
 
-                <RowDefinition />
+                <RowDefinition Height="79*" />
             </Grid.RowDefinitions>
 
             <GroupBox
@@ -274,27 +287,31 @@
                         Grid.Column="1"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtManufacturer" />
+                        Name="txtManufacturer"
+                        Height="22px"/>
 
                     <TextBox
                         Grid.Column="1"
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtCity" />
+                        Name="txtCity"
+                        Height="22px"/>
 
                     <TextBox
                         Grid.Column="1"
                         Grid.Row="2"
                         HorizontalAlignment="Stretch"
                         Margin="5"
-                        Name="txtCountry" />
+                        Name="txtCountry" 
+                        Height="20px"/>
 
                     <ComboBox
                         Grid.Column="1"
                         Grid.Row="3"
                         Margin="5"
-                        Name="cmbContinent" >
+                        Name="cmbContinent"
+                        Height="22px">
 
                         <ComboBoxItem Name="cmbItemAfrica" >
                             Africa
@@ -327,9 +344,9 @@
 
                 <Grid.RowDefinitions>
 
-                    <RowDefinition Height="137*" />
+                    <RowDefinition Height="194*" />
 
-                    <RowDefinition Height="48*" />
+                    <RowDefinition Height="43*" />
                 </Grid.RowDefinitions>
 
                 <GroupBox Margin="5" >
@@ -388,9 +405,9 @@
 
                     <Grid.RowDefinitions>
 
-                        <RowDefinition Height="40*" />
+                        <RowDefinition Height="327*" />
 
-                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="40*" />
                     </Grid.RowDefinitions>
                     
                     <Image
@@ -411,14 +428,16 @@
                             Grid.Column="0"
                             Margin="5,5,0,5"
                             IsReadOnly="True"
-                            Name="txtBrowse" />
+                            Name="txtBrowse"
+                            Height="22px"/>
 
                         <Button
                             Content="Browse"
                             Grid.Column="1"
                             Margin="5,5,5,5"
                             Name="btnBrowse"
-                            Click="btnBrowse_OnClick"/>
+                            Click="btnBrowse_OnClick"
+                            Height="22px"/>
                     </Grid>
                 </Grid>
             </GroupBox>
