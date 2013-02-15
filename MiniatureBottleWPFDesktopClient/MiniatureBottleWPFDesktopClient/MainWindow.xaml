@@ -405,16 +405,25 @@
 
                     <Grid.RowDefinitions>
 
-                        <RowDefinition Height="327*" />
+                        <RowDefinition Height="327*"/>
 
                         <RowDefinition Height="40*" />
                     </Grid.RowDefinitions>
                     
-                    <Image
-                        Margin="5"
-                        Name="imgBottle"                        
-                        Stretch="Uniform" />
-
+                    <ScrollViewer Name="scrlVwrForImage"  HorizontalScrollBarVisibility="Auto"
+                                  VerticalScrollBarVisibility="Auto">
+                        <Image
+                            Margin="5"
+                            Name="imgBottle"                        
+                            Stretch="Uniform" >
+                            <Image.LayoutTransform>
+                                <TransformGroup>
+                                    <ScaleTransform x:Name="scaleImage" />
+                                    <RotateTransform x:Name="rotateImage" />
+                                </TransformGroup>
+                            </Image.LayoutTransform>
+                        </Image>
+                    </ScrollViewer>                                  
                     <Grid Grid.Row="1" >
 
                         <Grid.ColumnDefinitions>

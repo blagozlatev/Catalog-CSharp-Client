@@ -29,21 +29,22 @@ namespace MiniatureBottleWPFDesktopClient
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {        
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void btnBrowse_OnClick(object sender, RoutedEventArgs e)
-        {
+        {            
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.FileName = "BottleImage";
             openFile.DefaultExt = ".jpg";
             openFile.Filter = "Image Files (*.bmp, *.jpg, *.jpeg)|*.bmp;*.jpg;*.jpeg";
             var fileFound = openFile.ShowDialog();
             if (fileFound == true)
-            {
+            {        
+                imgBottle.Stretch = Stretch.Uniform;
                 string directory = openFile.FileName;
                 BitmapImage img = new BitmapImage(new Uri(directory));                
                 imgBottle.Source = img;
@@ -53,23 +54,35 @@ namespace MiniatureBottleWPFDesktopClient
 
         private void btnClear_OnClick(object sender, RoutedEventArgs e)
         {
-            txtAge.Text = string.Empty;
-            txtAlcohol.Text = string.Empty;
-            txtAlcoholType.Text = string.Empty;
-            txtBrowse.Text = string.Empty;
-            txtCity.Text = string.Empty;
-            txtColor.Text = string.Empty;
-            txtContent.Text = string.Empty;
-            txtCountry.Text = string.Empty;
-            txtID.Text = string.Empty;
-            txtManufacturer.Text = string.Empty;
-            txtMaterial.Text = string.Empty;
-            txtName.Text = string.Empty;
-            txtNote.Text = string.Empty;
-            txtShape.Text = string.Empty;
-            txtShell.Text = string.Empty;
-            cmbContinent.SelectedIndex = -1;
-            imgBottle.Source = null;
+            //txtAge.Text = string.Empty;
+            //txtAlcohol.Text = string.Empty;
+            //txtAlcoholType.Text = string.Empty;
+            //txtBrowse.Text = string.Empty;
+            //txtCity.Text = string.Empty;
+            //txtColor.Text = string.Empty;
+            //txtContent.Text = string.Empty;
+            //txtCountry.Text = string.Empty;
+            //txtID.Text = string.Empty;
+            //txtManufacturer.Text = string.Empty;
+            //txtMaterial.Text = string.Empty;
+            //txtName.Text = string.Empty;
+            //txtNote.Text = string.Empty;
+            //txtShape.Text = string.Empty;
+            //txtShell.Text = string.Empty;
+            //cmbContinent.SelectedIndex = -1;
+            //imgBottle.Source = null;            
+            rotateImage.Angle += 90;
+            if (rotateImage.Angle > 360)
+            {
+                rotateImage.Angle = 90;
+            }
+
+            imgBottle.Stretch = Stretch.None;
+            scaleImage.CenterX = imgBottle.ActualWidth / 2;
+            scaleImage.CenterY = imgBottle.ActualHeight / 2;
+            scaleImage.ScaleX += 2;
+            scaleImage.ScaleY += 2;
+
         }
 
         private void btnSave_OnClick(object sender, RoutedEventArgs e)
