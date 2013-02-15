@@ -43,7 +43,9 @@ namespace MiniatureBottleWPFDesktopClient
             openFile.Filter = "Image Files (*.bmp, *.jpg, *.jpeg)|*.bmp;*.jpg;*.jpeg";
             var fileFound = openFile.ShowDialog();
             if (fileFound == true)
-            {        
+            {
+                imgBottle.Width = scrlVwrForImage.ActualWidth - 10;
+                imgBottle.Height = scrlVwrForImage.ActualHeight - 10;
                 imgBottle.Stretch = Stretch.Uniform;
                 string directory = openFile.FileName;
                 BitmapImage img = new BitmapImage(new Uri(directory));                
