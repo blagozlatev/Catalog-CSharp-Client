@@ -34,7 +34,7 @@ namespace MiniatureBottleWPFDesktopClient
         {
             InitializeComponent();            
         }
-
+        
         private void btnBrowse_OnClick(object sender, RoutedEventArgs e)
         {            
             OpenFileDialog openFile = new OpenFileDialog();
@@ -43,14 +43,22 @@ namespace MiniatureBottleWPFDesktopClient
             openFile.Filter = "Image Files (*.bmp, *.jpg, *.jpeg)|*.bmp;*.jpg;*.jpeg";
             var fileFound = openFile.ShowDialog();
             if (fileFound == true)
-            {
-                imgBottle.Width = scrlVwrForImage.ActualWidth - 10;
-                imgBottle.Height = scrlVwrForImage.ActualHeight - 10;
-                imgBottle.Stretch = Stretch.Uniform;
+            {                
                 string directory = openFile.FileName;
+                ImageView ImageView = new ImageView(openFile.FileName);
+                ImageView.Show();                
                 BitmapImage img = new BitmapImage(new Uri(directory));                
                 imgBottle.Source = img;
-                txtBrowse.Text = directory;
+                rotateImage.Angle = 0;
+                scaleImage.CenterX = imgBottle.ActualWidth / 2;
+                scaleImage.CenterY = imgBottle.ActualHeight / 2;
+                scaleImage.ScaleX = 1;
+                scaleImage.ScaleY = 1;
+                scrlVwrForImage.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+                scrlVwrForImage.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+                imgBottle.Width = scrlVwrForImage.ActualWidth - 10;
+                imgBottle.Height = scrlVwrForImage.ActualHeight - 10;                
+                txtBrowse.Text = directory;                
             }            
         }
 
@@ -72,19 +80,16 @@ namespace MiniatureBottleWPFDesktopClient
             //txtShape.Text = string.Empty;
             //txtShell.Text = string.Empty;
             //cmbContinent.SelectedIndex = -1;
-            //imgBottle.Source = null;            
+            //imgBottle.Source = null;        
+            scrlVwrForImage.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
+            scrlVwrForImage.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
             rotateImage.Angle += 90;
             if (rotateImage.Angle > 360)
             {
                 rotateImage.Angle = 90;
-            }
-
-            imgBottle.Stretch = Stretch.None;
-            scaleImage.CenterX = imgBottle.ActualWidth / 2;
-            scaleImage.CenterY = imgBottle.ActualHeight / 2;
-            scaleImage.ScaleX += 2;
-            scaleImage.ScaleY += 2;
-
+            }            
+            scaleImage.ScaleX += 0.2;
+            scaleImage.ScaleY += 0.2;
         }
 
         private void btnSave_OnClick(object sender, RoutedEventArgs e)

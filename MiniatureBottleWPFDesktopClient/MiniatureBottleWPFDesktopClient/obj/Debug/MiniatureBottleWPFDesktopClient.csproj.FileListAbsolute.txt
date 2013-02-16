@@ -28,3 +28,5 @@ D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopCli
 D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\bin\Debug\Newtonsoft.Json.xml
 D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\bin\Debug\System.Net.Http.Formatting.dll
 D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\bin\Debug\System.Net.Http.Formatting.xml
+D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\ImageView.baml
+D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\ImageView.g.cs
