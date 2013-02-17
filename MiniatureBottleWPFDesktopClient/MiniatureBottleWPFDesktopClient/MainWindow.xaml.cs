@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Win32;
 using System.Data;
-using System.Data.SqlServerCe;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -16,7 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
-using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -47,11 +45,12 @@ namespace MiniatureBottleWPFDesktopClient
             if (fileFound == true)
             {                
                 string directory = openFile.FileName;
-                BitmapImage img = new BitmapImage(new Uri(directory));                
+                BitmapImage img = new BitmapImage(new Uri(directory));
+                imgBottle.Source = img;
                 ImageView = new ImageView();
                 ImageView.imgBottle.Source = img;
                 ImageView.Show();
-                txtBrowse.Text = directory;
+                txtBrowse.Text = directory;               
             }            
         }
 
@@ -133,7 +132,48 @@ namespace MiniatureBottleWPFDesktopClient
                 MessageBox.Show(ex.Message, "Error");
             }
 
-            txtBrowse.Text = WebRequestPostBottle(new Uri("http://miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize()); 
+            BitmapImage bmp = imgBottle.Source as BitmapImage;
+            byte[] data;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bmp));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                encoder.Save(ms);
+                data = ms.ToArray();
+            }
+
+            txtBrowse.Text = WebRequestPostBottle(new Uri("miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize()); 
+        }
+
+        public string WebRequestPostImage(Uri url, byte[] img)
+        {
+            string ret = string.Empty;
+
+            StreamWriter requestWriter;
+
+            HttpWebRequest webRequest = WebRequest.Create(url) as HttpWebRequest;
+            if (webRequest != null)
+            {
+                webRequest.Method = "POST";
+                webRequest.ContentType = "image/bmp";
+                using (requestWriter = new StreamWriter(webRequest.GetRequestStream()))
+                {
+                    requestWriter.Write(img);
+                }
+            }
+
+            try
+            {
+                HttpWebResponse resp = webRequest.GetResponse() as HttpWebResponse;
+                Stream resStream = resp.GetResponseStream();
+                StreamReader reader = new StreamReader(resStream);
+                ret = reader.ReadToEnd();
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         public string WebRequestPostBottle(Uri url, string postData)
