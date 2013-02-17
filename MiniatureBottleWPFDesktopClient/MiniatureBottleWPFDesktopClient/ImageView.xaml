@@ -6,10 +6,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="31*"/>
-            <RowDefinition Height="338*" Name="Row1"/>
+            <RowDefinition Height="338*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Name="Column1"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
