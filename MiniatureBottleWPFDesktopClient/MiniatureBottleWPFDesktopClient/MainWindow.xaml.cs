@@ -21,6 +21,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using MiniatureBottleWPFDesktopClient.Nomenclatures;
 
 namespace MiniatureBottleWPFDesktopClient
 {
@@ -29,7 +30,8 @@ namespace MiniatureBottleWPFDesktopClient
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {        
+    {
+        ImageView ImageView;
         public MainWindow()
         {
             InitializeComponent();            
@@ -45,63 +47,37 @@ namespace MiniatureBottleWPFDesktopClient
             if (fileFound == true)
             {                
                 string directory = openFile.FileName;
-                ImageView ImageView = new ImageView(openFile.FileName);
-                ImageView.Show();                
                 BitmapImage img = new BitmapImage(new Uri(directory));                
-                imgBottle.Source = img;
-                rotateImage.Angle = 0;
-                scaleImage.CenterX = imgBottle.ActualWidth / 2;
-                scaleImage.CenterY = imgBottle.ActualHeight / 2;
-                scaleImage.ScaleX = 1;
-                scaleImage.ScaleY = 1;
-                scrlVwrForImage.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
-                scrlVwrForImage.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
-                imgBottle.Width = scrlVwrForImage.ActualWidth - 10;
-                imgBottle.Height = scrlVwrForImage.ActualHeight - 10;                
-                txtBrowse.Text = directory;                
+                ImageView = new ImageView();
+                ImageView.imgBottle.Source = img;
+                ImageView.Show();
+                txtBrowse.Text = directory;
             }            
         }
 
         private void btnClear_OnClick(object sender, RoutedEventArgs e)
         {
-            //txtAge.Text = string.Empty;
-            //txtAlcohol.Text = string.Empty;
-            //txtAlcoholType.Text = string.Empty;
-            //txtBrowse.Text = string.Empty;
-            //txtCity.Text = string.Empty;
-            //txtColor.Text = string.Empty;
-            //txtContent.Text = string.Empty;
-            //txtCountry.Text = string.Empty;
-            //txtID.Text = string.Empty;
-            //txtManufacturer.Text = string.Empty;
-            //txtMaterial.Text = string.Empty;
-            //txtName.Text = string.Empty;
-            //txtNote.Text = string.Empty;
-            //txtShape.Text = string.Empty;
-            //txtShell.Text = string.Empty;
-            //cmbContinent.SelectedIndex = -1;
-            //imgBottle.Source = null;        
-            scrlVwrForImage.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
-            scrlVwrForImage.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
-            rotateImage.Angle += 90;
-            if (rotateImage.Angle > 360)
-            {
-                rotateImage.Angle = 90;
-            }            
-            scaleImage.ScaleX += 0.2;
-            scaleImage.ScaleY += 0.2;
+            txtAge.Text = string.Empty;
+            txtAlcohol.Text = string.Empty;
+            txtAlcoholType.Text = string.Empty;
+            txtBrowse.Text = string.Empty;
+            txtCity.Text = string.Empty;
+            txtColor.Text = string.Empty;
+            txtContent.Text = string.Empty;
+            txtCountry.Text = string.Empty;
+            txtID.Text = string.Empty;
+            txtManufacturer.Text = string.Empty;
+            txtMaterial.Text = string.Empty;
+            txtName.Text = string.Empty;
+            txtNote.Text = string.Empty;
+            txtShape.Text = string.Empty;
+            txtShell.Text = string.Empty;
+            cmbContinent.SelectedIndex = -1;
+            imgBottle.Source = null;
         }
 
         private void btnSave_OnClick(object sender, RoutedEventArgs e)
-        {
-            Dictionary<int, string> continents = new Dictionary<int, string>() {
-                {0, "Africa"},
-                {1, "Asia"},
-                {2, "Australia"},
-                {3, "Europe"},
-                {4, "North America"},
-                {5, "South America"}
-            };
+        {            
             string errorMessage = string.Empty;
             if (txtID.Text == string.Empty)
             {
@@ -134,8 +110,8 @@ namespace MiniatureBottleWPFDesktopClient
                 b.AlcoholType = txtAlcoholType.Text;
                 b.City = txtCity.Text;
                 b.Color = txtColor.Text;
-                b.Content = txtContent.Text;
-                b.Continent = continents[cmbContinent.SelectedIndex];
+                b.Content = txtContent.Text;                
+                b.Continent = cmbContinent.SelectedValue.ToString();
                 b.Country = txtCountry.Text;
                 if (int.TryParse(txtID.Text, out testValue))
                 {
@@ -189,6 +165,11 @@ namespace MiniatureBottleWPFDesktopClient
             {
                 return ex.Message;
             }            
+        }
+
+        private void MainWindow_OnClose(object sender, EventArgs e)
+        {
+            ImageView.Close();
         }
     }
 }

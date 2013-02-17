@@ -7,7 +7,8 @@
     Width="1050"
     Title="MainWindow"    
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    x:Class="MiniatureBottleWPFDesktopClient.MainWindow" >
+    x:Class="MiniatureBottleWPFDesktopClient.MainWindow"
+    Closed="MainWindow_OnClose">
 
     <Grid>
 
@@ -307,6 +308,7 @@
                         Height="20px"/>
 
                     <ComboBox
+                        SelectedValuePath="Content"
                         Grid.Column="1"
                         Grid.Row="3"
                         Margin="5"
