@@ -20,6 +20,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using MiniatureBottleWPFDesktopClient.Nomenclatures;
+using System.Drawing;
 
 namespace MiniatureBottleWPFDesktopClient
 {
@@ -44,8 +45,8 @@ namespace MiniatureBottleWPFDesktopClient
             var fileFound = openFile.ShowDialog();
             if (fileFound == true)
             {                
-                string directory = openFile.FileName;
-                BitmapImage img = new BitmapImage(new Uri(directory));
+                string directory = openFile.FileName;                
+                BitmapImage img = new BitmapImage(new Uri(directory));                
                 imgBottle.Source = img;
                 ImageView = new ImageView();
                 ImageView.imgBottle.Source = img;
@@ -131,21 +132,14 @@ namespace MiniatureBottleWPFDesktopClient
             {
                 MessageBox.Show(ex.Message, "Error");
             }
+            byte[] data = File.ReadAllBytes(txtBrowse.Text);                      
 
-            BitmapImage bmp = imgBottle.Source as BitmapImage;
-            byte[] data;
-            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(bmp));
-            using (MemoryStream ms = new MemoryStream())
-            {
-                encoder.Save(ms);
-                data = ms.ToArray();
-            }
-
-            txtBrowse.Text = WebRequestPostBottle(new Uri("miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize()); 
+            //txtBrowse.Text = WebRequestPostBottle(new Uri("http://miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize());
+            //http://localhost:47506/Serialized/PostImage
+            txtNote.Text = WebRequestPostImage(new Uri("http://localhost:47506/Serialized/PostImage"), Convert.ToBase64String(data));
         }
 
-        public string WebRequestPostImage(Uri url, byte[] img)
+        public string WebRequestPostImage(Uri url, string img)
         {
             string ret = string.Empty;
 
@@ -155,10 +149,10 @@ namespace MiniatureBottleWPFDesktopClient
             if (webRequest != null)
             {
                 webRequest.Method = "POST";
-                webRequest.ContentType = "image/bmp";
+                webRequest.ContentType = "multipart/form-data";
                 using (requestWriter = new StreamWriter(webRequest.GetRequestStream()))
                 {
-                    requestWriter.Write(img);
+                    requestWriter.Write(img);                    
                 }
             }
 
