@@ -132,11 +132,11 @@ namespace MiniatureBottleWPFDesktopClient
             {
                 MessageBox.Show(ex.Message, "Error");
             }
-            byte[] data = File.ReadAllBytes(txtBrowse.Text);
+            byte[] requestBytes = File.ReadAllBytes(txtBrowse.Text);
 
-            txtBrowse.Text = WebRequesting(new Uri("http://miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize(),
-                Constants.Web.MethodPost, Constants.Web.ContentText);            
-            txtNote.Text = WebRequesting(new Uri("http://localhost:47506/Serialized/PostImage"), Convert.ToBase64String(data)
+            //txtBrowse.Text = WebRequesting(new Uri("http://miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize(),
+            //    Constants.Web.MethodPost, Constants.Web.ContentText);
+            txtNote.Text = WebRequesting(new Uri("http://localhost:47506/Serialized/PostImage/" + txtID.Text), Convert.ToBase64String(requestBytes)
                 , Constants.Web.MethodPost, Constants.Web.ContentBinaryFormData);
         }
 
@@ -167,6 +167,11 @@ namespace MiniatureBottleWPFDesktopClient
             {
                 return ex.Message;
             }            
+        }
+
+        private void MainWindow_OnClose(object o, EventArgs e)
+        {
+            ImageView.Close();
         }
     }
 }
