@@ -19,5 +19,13 @@
             public static int One { get { return 1; } }
             public static int Hundred { get { return 100; } }
         }
+
+        public static class Web
+        {
+            public static string MethodPost { get { return "POST"; } }
+            public static string MethodGet { get { return "GET"; } }
+            public static string ContentText { get { return "text/plain"; } }
+            public static string ContentBinaryFormData { get { return "multipart/form-data"; } }
+        }
     }
 }

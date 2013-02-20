@@ -132,78 +132,41 @@ namespace MiniatureBottleWPFDesktopClient
             {
                 MessageBox.Show(ex.Message, "Error");
             }
-            byte[] data = File.ReadAllBytes(txtBrowse.Text);                      
+            byte[] data = File.ReadAllBytes(txtBrowse.Text);
 
-            //txtBrowse.Text = WebRequestPostBottle(new Uri("http://miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize());
-            //http://localhost:47506/Serialized/PostImage
-            txtNote.Text = WebRequestPostImage(new Uri("http://localhost:47506/Serialized/PostImage"), Convert.ToBase64String(data));
+            txtBrowse.Text = WebRequesting(new Uri("http://miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize(),
+                Constants.Web.MethodPost, Constants.Web.ContentText);            
+            txtNote.Text = WebRequesting(new Uri("http://localhost:47506/Serialized/PostImage"), Convert.ToBase64String(data)
+                , Constants.Web.MethodPost, Constants.Web.ContentBinaryFormData);
         }
 
-        public string WebRequestPostImage(Uri url, string img)
+        public string WebRequesting(Uri url, string data, string method, string contentType)
         {
-            string ret = string.Empty;
-
             StreamWriter requestWriter;
-
             HttpWebRequest webRequest = WebRequest.Create(url) as HttpWebRequest;
             if (webRequest != null)
             {
-                webRequest.Method = "POST";
-                webRequest.ContentType = "multipart/form-data";
+                webRequest.Method = method;
+                webRequest.ContentType = contentType;                
                 using (requestWriter = new StreamWriter(webRequest.GetRequestStream()))
                 {
-                    requestWriter.Write(img);                    
+                    requestWriter.Write(data);
                 }
             }
 
             try
             {
+                String result;
                 HttpWebResponse resp = webRequest.GetResponse() as HttpWebResponse;
                 Stream resStream = resp.GetResponseStream();
                 StreamReader reader = new StreamReader(resStream);
-                ret = reader.ReadToEnd();
-                return ret;
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-        }
-
-        public string WebRequestPostBottle(Uri url, string postData)
-        {
-            string ret = string.Empty;
-
-            StreamWriter requestWriter;
-
-            HttpWebRequest webRequest = WebRequest.Create(url) as HttpWebRequest;
-            if (webRequest != null)
-            {
-                webRequest.Method = "POST";
-                webRequest.ContentType = "text/plain";                
-                using (requestWriter = new StreamWriter(webRequest.GetRequestStream()))
-                {
-                    requestWriter.Write(postData);
-                }
-            }
-
-            try
-            {
-                HttpWebResponse resp = webRequest.GetResponse() as HttpWebResponse;
-                Stream resStream = resp.GetResponseStream();
-                StreamReader reader = new StreamReader(resStream);
-                ret = reader.ReadToEnd();
-                return ret;
+                result = reader.ReadToEnd();
+                return result;
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }            
-        }
-
-        private void MainWindow_OnClose(object sender, EventArgs e)
-        {
-            ImageView.Close();
         }
     }
 }
