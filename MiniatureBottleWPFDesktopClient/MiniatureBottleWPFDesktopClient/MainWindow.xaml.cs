@@ -37,21 +37,21 @@ namespace MiniatureBottleWPFDesktopClient
         }
         
         private void btnBrowse_OnClick(object sender, RoutedEventArgs e)
-        {            
+        {
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.FileName = "BottleImage";
             openFile.DefaultExt = ".jpg";
             openFile.Filter = "Image Files (*.bmp, *.jpg, *.jpeg)|*.bmp;*.jpg;*.jpeg";
             var fileFound = openFile.ShowDialog();
             if (fileFound == true)
-            {                
-                string directory = openFile.FileName;                
-                BitmapImage img = new BitmapImage(new Uri(directory));                
+            {
+                string directory = openFile.FileName;
+                BitmapImage img = new BitmapImage(new Uri(directory));
                 imgBottle.Source = img;
                 ImageView = new ImageView();
                 ImageView.imgBottle.Source = img;
                 ImageView.Show();
-                txtBrowse.Text = directory;               
+                txtBrowse.Text = directory;
             }            
         }
 
@@ -77,7 +77,7 @@ namespace MiniatureBottleWPFDesktopClient
         }
 
         private void btnSave_OnClick(object sender, RoutedEventArgs e)
-        {            
+        {
             string errorMessage = string.Empty;
             if (txtID.Text == string.Empty)
             {
@@ -96,7 +96,7 @@ namespace MiniatureBottleWPFDesktopClient
 
             Bottle b = new Bottle();
             try
-            {                
+            {
                 int testValue;
                 if (int.TryParse(txtAge.Text, out testValue))
                 {
@@ -110,7 +110,7 @@ namespace MiniatureBottleWPFDesktopClient
                 b.AlcoholType = txtAlcoholType.Text;
                 b.City = txtCity.Text;
                 b.Color = txtColor.Text;
-                b.Content = txtContent.Text;                
+                b.Content = txtContent.Text;
                 b.Continent = cmbContinent.SelectedValue.ToString();
                 b.Country = txtCountry.Text;
                 if (int.TryParse(txtID.Text, out testValue))
@@ -171,7 +171,10 @@ namespace MiniatureBottleWPFDesktopClient
 
         private void MainWindow_OnClose(object o, EventArgs e)
         {
-            ImageView.Close();
+            if (ImageView != null)
+            {
+                ImageView.Close();
+            }
         }
     }
 }
