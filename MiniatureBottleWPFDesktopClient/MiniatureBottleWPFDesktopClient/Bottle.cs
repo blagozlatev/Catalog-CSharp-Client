@@ -27,23 +27,41 @@ namespace MiniatureBottleWPFDesktopClient
 
         public override string ToString()
         {
-            string strReturn = "Age: " + this.Age + "\n" + "Alcohol: " + this.Alcohol + "\n" +
-                "Alcohol Type: " + this.AlcoholType + "\n" + "City: " + this.City + "\n" + "Color: " +
-                this.Color + "\n" + "Content: " + this.Content + "\n" + "Continent: " + this.Continent + "\n" +
-                "Country: " + this.Continent + "\n" + "ID: " + this.ID + "\n" + "Manufacturer: " +
-                this.Manufacturer + "\n" + "Material: " + this.Material + "\n" + "Name: " + this.Name + "\n" +
-                "Note: " + this.Note + "\n" + "Shape: " + this.Shape + "\n" + "Shell: " + this.Shell + "\n";
-            return strReturn;
+            return "ID: " + this.ID + "\n"
+                            + "Alcohol Type: " + this.AlcoholType + "\n"
+                            + "Alcohol" + this.Alcohol + "\n"
+                            + "Content" + this.Content + "\n"
+                            + "Age" + this.Age + "\n"
+                            + "Shell" + this.Shell + "\n"
+                            + "Name" + this.Name + "\n"
+                            + "Shape" + this.Shape + "\n"
+                            + "Color" + this.Color + "\n"
+                            + "Material" + this.Material + "\n"
+                            + "Manufacturer" + this.Manufacturer + "\n"
+                            + "City" + this.City + "\n"
+                            + "Country" + this.Country + "\n"
+                            + "Continent" + this.Continent + "\n"
+                            + "Note" + this.Note + "\n";
         }
 
-        public string Serialize()
+        public static string Serialize(Bottle b)
         {
-            
-            return this.Age + "#" + this.Alcohol + "#" + this.AlcoholType + "#" +
-                        this.City + "#" + this.Color + "#" + this.Content + "#" + this.Continent + "#"
-                        + this.Country + "#" + this.ID + "#" + this.Manufacturer + "#" + this.Material
-                         + "#" + this.Name + "#" + this.Note + "#" + this.Shape + "#" + this.Shell + "\n";
-        }        
+            return b.ID.ToString().Replace('#', ' ') + "#"
+                + b.AlcoholType.Replace('#', ' ') + "#"
+                + b.Alcohol.Replace('#', ' ') + "#"
+                + b.Content.Replace('#', ' ') + "#"
+                + b.Age.ToString().Replace('#', ' ') + "#"
+                + b.Shell.Replace('#', ' ') + "#"
+                + b.Name.Replace('#', ' ') + "#"
+                + b.Shape.Replace('#', ' ') + "#"
+                + b.Color.Replace('#', ' ') + "#"
+                + b.Material.Replace('#', ' ') + "#"
+                + b.Manufacturer.Replace('#', ' ') + "#"
+                + b.City.Replace('#', ' ') + "#"
+                + b.Country.Replace('#', ' ') + "#"
+                + b.Continent.Replace('#', ' ') + "#"
+                + b.Note.Replace('#', ' ') + "#";
+        }    
 
         public static Bottle Deserialize(string serialized)
         {
@@ -55,45 +73,46 @@ namespace MiniatureBottleWPFDesktopClient
                     split[i] = string.Empty;
                 }
             }
-            Bottle bottle = new Bottle();
+            Bottle b = new Bottle();
             try
             {
                 int testValue;
                 if (int.TryParse(split[0], out testValue))
                 {
-                    bottle.Age = int.Parse(split[0]);
+                    b.ID = int.Parse(split[0]);
                 }
                 else
                 {
                     throw new Exception("Invalid value for Age!");
-                }
-                bottle.Alcohol = split[1];
-                bottle.AlcoholType = split[2];
-                bottle.City = split[3];
-                bottle.Color = split[4];
-                bottle.Content = split[5];
-                bottle.Continent = split[6];
-                bottle.Country = split[7];
-                if (int.TryParse(split[8], out testValue))
+                }                
+                b.AlcoholType = split[1];
+                b.Alcohol = split[2];
+                b.Content = split[3];
+
+                if (int.TryParse(split[4], out testValue))
                 {
-                    bottle.ID = int.Parse(split[8]);
+                    b.Age = int.Parse(split[4]);
                 }
                 else
                 {
-                    throw new Exception("Invalid value for ID!");
-                }
-                bottle.Manufacturer = split[9];
-                bottle.Material = split[10];
-                bottle.Name = split[11];
-                bottle.Note = split[12];
-                bottle.Shape = split[13];
-                bottle.Shell = split[14];
+                    throw new Exception("Invalid value for Age!");
+                }                
+                b.Shell = split[5];
+                b.Name = split[6];
+                b.Shape = split[7];
+                b.Color = split[8];
+                b.Material = split[9];
+                b.Manufacturer = split[10];
+                b.City = split[11];
+                b.Country = split[12];
+                b.Continent = split[13];
+                b.Note = split[14];
             }
             catch (IndexOutOfRangeException ex)
             {
                 return null;
             }
-            return bottle;
+            return b;         
         }        
     }
 }

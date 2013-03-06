@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\
+D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\
 MiniatureBottleWPFDesktopClient
 none
 false
 DEBUG;TRACE
-D:\Programming\DiplomaThesis\Catalog-CSharp-Android\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\App.xaml
+D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\App.xaml
 2-570044184
 
-13-1181455347
-211688143643
+13792729600
+211529657665
 MainWindow.xaml;ImageView.xaml;
 
 False

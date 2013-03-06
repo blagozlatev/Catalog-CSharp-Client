@@ -134,7 +134,7 @@ namespace MiniatureBottleWPFDesktopClient
             }
             byte[] requestBytes = File.ReadAllBytes(txtBrowse.Text);
 
-            //txtBrowse.Text = WebRequesting(new Uri("http://miniaturebottlemvcwebapplication.apphb.com/Serialized/Post"), b.Serialize(),
+            //txtBrowse.Text = WebRequesting(new Uri("http://catalogwebapp.apphb.com"), b.Serialize(),
             //    Constants.Web.MethodPost, Constants.Web.ContentText);
             txtNote.Text = WebRequesting(new Uri("http://localhost:47506/Serialized/PostImage/" + txtID.Text), Convert.ToBase64String(requestBytes)
                 , Constants.Web.MethodPost, Constants.Web.ContentBinaryFormData);
