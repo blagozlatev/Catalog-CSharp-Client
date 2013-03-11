@@ -60,7 +60,7 @@ namespace MiniatureBottleWPFDesktopClient
                 + b.City.Replace('#', ' ') + "#"
                 + b.Country.Replace('#', ' ') + "#"
                 + b.Continent.Replace('#', ' ') + "#"
-                + b.Note.Replace('#', ' ') + "#";
+                + b.Note.Replace('#', ' ') + "#" + "\n";
         }    
 
         public static Bottle Deserialize(string serialized)
