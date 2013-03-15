@@ -29,6 +29,7 @@ namespace MiniatureBottleWPFDesktopClient
     public partial class AddBottle : Window
     {
         ImageView ImageView;
+        public MainWindow mainWindow { get; set; }
         public AddBottle()
         {
             InitializeComponent();
@@ -176,6 +177,11 @@ namespace MiniatureBottleWPFDesktopClient
             if (ImageView != null)
             {
                 ImageView.Close();
+            }
+            if (mainWindow != null)
+            {
+                mainWindow.Show();
+                this.Close();
             }
         }
     }

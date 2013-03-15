@@ -42,6 +42,8 @@ namespace MiniatureBottleWPFDesktopClient
         private void btnAdd_OnClick(object sender, RoutedEventArgs e)
         {
             addbtl = new AddBottle();
+            addbtl.mainWindow = this;
+            this.Hide();
             addbtl.Show();
         }
 
