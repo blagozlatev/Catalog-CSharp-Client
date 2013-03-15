@@ -19,7 +19,7 @@ namespace MiniatureBottleWPFDesktopClient
     /// Interaction logic for ImageView.xaml
     /// </summary>
     public partial class ImageView : Window
-    {
+    {        
         public ImageView()
         {            
             InitializeComponent();

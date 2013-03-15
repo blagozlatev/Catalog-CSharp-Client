@@ -79,9 +79,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddBottle.xaml.cs">
+      <DependentUpon>AddBottle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImageView.xaml.cs">
       <DependentUpon>ImageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShowAllBottles.xaml.cs">
+      <DependentUpon>ShowAllBottles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShowBottle.xaml.cs">
+      <DependentUpon>ShowBottle.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddBottle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,6 +110,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ImageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowAllBottles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowBottle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

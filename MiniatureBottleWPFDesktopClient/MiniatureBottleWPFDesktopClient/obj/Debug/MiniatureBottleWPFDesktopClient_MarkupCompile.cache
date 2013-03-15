@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\App.xaml
-2-570044184
+5-2117979536
 
-9-2023300225
+122104401062
 211529657665
-MainWindow.xaml;ImageView.xaml;
+AddBottle.xaml;MainWindow.xaml;ImageView.xaml;ShowAllBottles.xaml;ShowBottle.xaml;
 
 False
 

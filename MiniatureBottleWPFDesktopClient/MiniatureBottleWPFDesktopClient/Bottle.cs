@@ -8,7 +8,24 @@ using System.Threading.Tasks;
 namespace MiniatureBottleWPFDesktopClient
 {    
     public class Bottle
-    {        
+    {
+        public Bottle()
+        {
+            Alcohol = string.Empty;
+            AlcoholType = string.Empty;
+            Content = string.Empty;
+            Shell = string.Empty;
+            Name = string.Empty;
+            Shape = string.Empty;
+            Color = string.Empty;
+            Material = string.Empty;
+            Manufacturer = string.Empty;
+            City = string.Empty;
+            Country = string.Empty;
+            Continent = string.Empty;
+            Note = string.Empty;
+        }
+
         public int ID { get; set; }
         public string AlcoholType { get; set; }
         public string Alcohol { get; set; }
