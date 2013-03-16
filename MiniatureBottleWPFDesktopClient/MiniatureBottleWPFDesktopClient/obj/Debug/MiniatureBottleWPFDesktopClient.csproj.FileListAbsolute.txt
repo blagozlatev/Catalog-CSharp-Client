@@ -51,3 +51,7 @@ D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClie
 D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\ShowBottle.g.cs
 D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\ShowAllBottles.baml
 D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\ShowAllBottles.g.cs
+D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\bin\Debug\MiniatureBottleWPFDesktopClient.exe.manifest
+D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\bin\Debug\MiniatureBottleWPFDesktopClient.application
+D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\MiniatureBottleWPFDesktopClient.exe.manifest
+D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\MiniatureBottleWPFDesktopClient.application
