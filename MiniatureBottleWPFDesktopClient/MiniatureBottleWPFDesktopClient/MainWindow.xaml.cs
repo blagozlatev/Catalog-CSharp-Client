@@ -29,7 +29,7 @@ namespace MiniatureBottleWPFDesktopClient
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {        
         AddBottle addbtl;
         ShowBottle shbtl;
         ShowAllBottles shallbtl;
@@ -50,12 +50,16 @@ namespace MiniatureBottleWPFDesktopClient
         private void btnShow_OnClick(object sender, RoutedEventArgs e)
         {
             shbtl = new ShowBottle();
+            shbtl.mainWindow = this;
+            this.Hide();
             shbtl.Show();
         }
 
         private void btnShowAll_OnClick(object sender, RoutedEventArgs e)
         {
             shallbtl = new ShowAllBottles();
+            shallbtl.mainWindow = this;
+            this.Hide();
             shallbtl.Show();
         }
 

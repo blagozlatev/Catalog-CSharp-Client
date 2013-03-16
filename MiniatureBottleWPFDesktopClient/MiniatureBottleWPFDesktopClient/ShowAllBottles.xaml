@@ -1,8 +1,10 @@
 ﻿<Window x:Class="MiniatureBottleWPFDesktopClient.ShowAllBottles"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ShowAllBottles" Height="300" Width="300">
+        Title="ShowAllBottles" Height="300" Width="300"
+        Closed="ShowAllBottles_OnClosed">
     <Grid>
-        
+        <ListBox
+            Name="lbBottleNames" />
     </Grid>
 </Window>

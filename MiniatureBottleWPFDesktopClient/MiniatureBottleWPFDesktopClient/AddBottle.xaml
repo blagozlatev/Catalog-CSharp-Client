@@ -5,7 +5,7 @@
     MaxHeight="430"
     MaxWidth="1050"
     Width="1050"
-    Title="MainWindow"    
+    Title="Add Bottle"    
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     x:Class="MiniatureBottleWPFDesktopClient.AddBottle"
     Closed="AddBottle_OnClose">

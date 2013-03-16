@@ -29,7 +29,7 @@ namespace MiniatureBottleWPFDesktopClient
     public partial class AddBottle : Window
     {
         ImageView ImageView;
-        public MainWindow mainWindow { get; set; }
+        public Window mainWindow { get; set; }
         public AddBottle()
         {
             InitializeComponent();

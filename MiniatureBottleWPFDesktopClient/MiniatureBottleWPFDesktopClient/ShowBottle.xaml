@@ -1,8 +1,358 @@
 ﻿<Window x:Class="MiniatureBottleWPFDesktopClient.ShowBottle"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ShowBottle" Height="300" Width="300">
+        Title="ShowBottle"
+        Height="430"
+        MinHeight="430"
+        MinWidth="1050"
+        MaxHeight="430"
+        MaxWidth="1050"
+        Width="1050"
+        Closed="ShowBottle_OnClosed">
     <Grid>
-        
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition />
+
+            <ColumnDefinition />
+
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="54*" />
+
+                <RowDefinition Height="79*" />
+            </Grid.RowDefinitions>
+
+            <GroupBox Margin="5" >
+
+                <GroupBox.Header>
+                    Drink Details
+                </GroupBox.Header>
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="20*" />
+
+                        <ColumnDefinition Width="61*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Content="Alcohol Type:"
+                        Grid.Column="0"
+                        Grid.Row="0" />
+
+                    <Label
+                        Content="Alcohol:"
+                        Grid.Column="0"
+                        Grid.Row="1" />
+
+                    <Label
+                        Content="Content:"
+                        Grid.Column="0"
+                        Grid.Row="2" />
+
+                    <Label
+                        Content="Age:"
+                        Grid.Column="0"
+                        Grid.Row="3" />
+
+                    <Label
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblAlcoholType"                        />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblAlcohol"                        />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblContent"                        />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblAge"                       />
+                </Grid>
+            </GroupBox>
+
+            <GroupBox
+                Grid.Row="1"
+                Margin="5" >
+
+                <GroupBox.Header>
+                    Bottle Details
+                </GroupBox.Header>
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="20*" />
+
+                        <ColumnDefinition Width="61*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Content="ID:"
+                        Grid.Column="0"
+                        Grid.Row="0" />
+
+                    <Label
+                        Content="Shell:"
+                        Grid.Column="0"
+                        Grid.Row="1" />
+
+                    <Label
+                        Content="Name:"
+                        Grid.Column="0"
+                        Grid.Row="2" />
+
+                    <Label
+                        Content="Shape:"
+                        Grid.Column="0"
+                        Grid.Row="3" />
+
+                    <Label
+                        Content="Color:"
+                        Grid.Column="0"
+                        Grid.Row="4" />
+
+                    <Label
+                        Content="Material:"
+                        Grid.Column="0"
+                        Grid.Row="5" 
+                        />
+
+                    <Label
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblID"                        />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblShell"                        />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblName"                        />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblShape"                         />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblColor"                         />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblMaterial"                        />
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <Grid Grid.Column="1" >
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="54*" />
+
+                <RowDefinition Height="79*" />
+            </Grid.RowDefinitions>
+
+            <GroupBox
+                Grid.Row="0"
+                Margin="5" >
+
+                <GroupBox.Header>
+                    Origin
+                </GroupBox.Header>
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="87*" />
+
+                        <ColumnDefinition Width="239*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Content="Manufacturer:"
+                        Grid.Column="0"
+                        Grid.Row="0" />
+
+                    <Label
+                        Content="City/State:"
+                        Grid.Column="0"
+                        Grid.Row="1" />
+
+                    <Label
+                        Content="Country:"
+                        Grid.Column="0"
+                        Grid.Row="2" />
+
+                    <Label
+                        Content="Continent:"
+                        Grid.Column="0"
+                        Grid.Row="3" />
+
+                    <Label
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"                      
+                        Name="lblManufacturer"                        />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblCity"                        />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        HorizontalAlignment="Stretch"                        
+                        Name="lblCountry" />
+                    
+                    <Label                        
+                        Grid.Column="1"
+                        Grid.Row="3"                        
+                        Name="lblContinent"/>                        
+                </Grid>
+            </GroupBox>
+
+            <Grid Grid.Row="1" >
+                <GroupBox Margin="5" >
+
+                    <GroupBox.Header>
+                        Note
+                    </GroupBox.Header>
+
+                    <Label
+                        Margin="5"
+                        Name="lblNote" />
+                </GroupBox>
+                                
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="2" >
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <GroupBox Margin="5" >
+
+                <GroupBox.Header>
+                    Picture
+                </GroupBox.Header>
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height="327*"/>
+
+                        <RowDefinition Height="40*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                            Margin="5"
+                            Name="imgBottle"                        
+                            Stretch="Uniform"
+                        />                    
+                    <Grid Grid.Row="1" >
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="5*" />
+
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox
+                            Grid.Column="0"
+                            Margin="5,5,0,5"                            
+                            Name="txtBID"
+                            Height="22px"/>
+
+                        <Button
+                            Content="Get"
+                            Grid.Column="1"
+                            Margin="5,5,5,5"
+                            Name="btnGetInfo"
+                            Click="btnGetInfo_OnClick"
+                            Height="22px"/>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Grid>
     </Grid>
 </Window>
