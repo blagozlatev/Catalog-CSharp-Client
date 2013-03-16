@@ -91,6 +91,7 @@
     <Compile Include="ShowBottle.xaml.cs">
       <DependentUpon>ShowBottle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WebRequests.cs" />
     <Page Include="AddBottle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

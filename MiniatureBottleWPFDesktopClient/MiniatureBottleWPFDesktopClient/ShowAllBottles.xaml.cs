@@ -29,8 +29,9 @@ namespace MiniatureBottleWPFDesktopClient
         {
             InitializeComponent();
             lbBottleNames.MouseDoubleClick += new MouseButtonEventHandler(lbBottleNames_MouseDoubleClick);
-            List<string> serializedBottles = WebRequestingList(new Uri("http://bottlewebapp.apphb.com/Serialized/"),
-                Constants.Web.MethodGet, Constants.Web.ContentText);
+            List<string> serializedBottles = WebRequests.GetList
+                (new Uri(Constants.Links.GetAllBottles),
+                Constants.Web.MethodGet, Constants.Web.ContentText);                
             bottles = new List<Bottle>();
             foreach (string s in serializedBottles)
             {
@@ -66,58 +67,6 @@ namespace MiniatureBottleWPFDesktopClient
             }
             mainWindow.Show();
             this.Close();
-        }
-
-        public string WebRequesting(Uri url, string method, string contentType)
-        {
-            HttpWebRequest webRequest = WebRequest.Create(url) as HttpWebRequest;
-            if (webRequest != null)
-            {
-                webRequest.Method = method;
-                webRequest.ContentType = contentType;
-            }
-
-            try
-            {
-                String result;
-                HttpWebResponse resp = webRequest.GetResponse() as HttpWebResponse;
-                Stream resStream = resp.GetResponseStream();
-                StreamReader reader = new StreamReader(resStream);
-                result = reader.ReadToEnd();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-        }
-
-        public List<string> WebRequestingList(Uri url, string method, string contentType)
-        {
-            List<string> result = new List<string>();
-            HttpWebRequest webRequest = WebRequest.Create(url) as HttpWebRequest;
-            if (webRequest != null)
-            {
-                webRequest.Method = method;
-                webRequest.ContentType = contentType;
-            }
-
-            try
-            {                
-                HttpWebResponse resp = webRequest.GetResponse() as HttpWebResponse;
-                Stream resStream = resp.GetResponseStream();
-                StreamReader reader = new StreamReader(resStream);
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    result.Add(line);
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
         }
     }
 }

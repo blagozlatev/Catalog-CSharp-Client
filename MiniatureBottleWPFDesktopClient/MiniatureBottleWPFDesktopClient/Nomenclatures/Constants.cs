@@ -27,5 +27,14 @@
             public static string ContentText { get { return "text/plain"; } }
             public static string ContentBinaryFormData { get { return "multipart/form-data"; } }
         }
+
+        public static class Links
+        {
+            public static string GetAllBottles { get { return "http://bottlewebapp.apphb.com/Serialized/"; } }
+            public static string GetBottle { get { return "http://bottlewebapp.apphb.com/Serialized/GetBottle/"; } }
+            public static string GetImageBase64 { get { return "http://bottlewebapp.apphb.com/Serialized/GetImageBase/"; } }
+            public static string SendBottle { get { return "http://bottlewebapp.apphb.com/Serialized/Post"; } }
+            public static string SendImageBase64 { get { return "http://bottlewebapp.apphb.com/Serialized/PostImage/"; } }
+        }
     }
 }

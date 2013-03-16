@@ -50,9 +50,9 @@ namespace MiniatureBottleWPFDesktopClient
 
         private void btnGetInfo_OnClick(object sender, RoutedEventArgs e)
         {
-            string bottleString = WebRequesting(new Uri("http://bottlewebapp.apphb.com/Serialized/GetBottle/" + txtBID.Text),
+            string bottleString = WebRequests.GetSingle(new Uri(Constants.Links.GetBottle + txtBID.Text),
                 Constants.Web.MethodGet, Constants.Web.ContentText);
-            string bottleBase64String = WebRequesting(new Uri("http://bottlewebapp.apphb.com/Serialized/GetImageBase/" + txtBID.Text), 
+            string bottleBase64String = WebRequests.GetSingle(new Uri(Constants.Links.GetImageBase64 + txtBID.Text), 
                  Constants.Web.MethodGet, Constants.Web.ContentBinaryFormData);
 
             if (bottleBase64String != "0")
@@ -86,30 +86,6 @@ namespace MiniatureBottleWPFDesktopClient
                 lblNote.Content = b.Note;
                 lblShape.Content = b.Shape;
                 lblShell.Content = b.Shell;
-            }
-        }
-
-        public string WebRequesting(Uri url, string method, string contentType)
-        {            
-            HttpWebRequest webRequest = WebRequest.Create(url) as HttpWebRequest;
-            if (webRequest != null)
-            {
-                webRequest.Method = method;
-                webRequest.ContentType = contentType;                
-            }
-
-            try
-            {
-                String result;
-                HttpWebResponse resp = webRequest.GetResponse() as HttpWebResponse;
-                Stream resStream = resp.GetResponseStream();
-                StreamReader reader = new StreamReader(resStream);
-                result = reader.ReadToEnd();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
             }
         }
     }

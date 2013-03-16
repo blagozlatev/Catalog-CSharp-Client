@@ -130,45 +130,16 @@ namespace MiniatureBottleWPFDesktopClient
                 b.Note = txtNote.Text;
                 b.Shape = txtShape.Text;
                 b.Shell = txtShell.Text;
-                txtBrowse.Text = WebRequesting(new Uri("http://bottlewebapp.apphb.com/Serialized/Post"), Bottle.Serialize(b),
+                txtBrowse.Text = WebRequests.SendBottleOrImage(new Uri(Constants.Links.SendBottle), Bottle.Serialize(b),
                 Constants.Web.MethodPost, Constants.Web.ContentText);
                 byte[] requestBytes = File.ReadAllBytes(txtBrowse.Text);
-                txtNote.Text = WebRequesting(new Uri("http://bottlewebapp.apphb.com/Serialized/PostImage/" + txtID.Text),
+                txtNote.Text = WebRequests.SendBottleOrImage(new Uri(Constants.Links.SendImageBase64 + txtID.Text),
                 Convert.ToBase64String(requestBytes, Base64FormattingOptions.None)
                 , Constants.Web.MethodPost, Constants.Web.ContentBinaryFormData);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error");
-            }
-        }
-
-        public string WebRequesting(Uri url, string data, string method, string contentType)
-        {
-            StreamWriter requestWriter;
-            HttpWebRequest webRequest = WebRequest.Create(url) as HttpWebRequest;
-            if (webRequest != null)
-            {
-                webRequest.Method = method;
-                webRequest.ContentType = contentType;
-                using (requestWriter = new StreamWriter(webRequest.GetRequestStream()))
-                {
-                    requestWriter.Write(data);
-                }
-            }
-
-            try
-            {
-                String result;
-                HttpWebResponse resp = webRequest.GetResponse() as HttpWebResponse;
-                Stream resStream = resp.GetResponseStream();
-                StreamReader reader = new StreamReader(resStream);
-                result = reader.ReadToEnd();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
             }
         }
 
