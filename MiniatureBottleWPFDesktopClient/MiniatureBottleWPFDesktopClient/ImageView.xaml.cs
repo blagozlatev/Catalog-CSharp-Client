@@ -43,8 +43,8 @@ namespace MiniatureBottleWPFDesktopClient
 
         private void btnFillWindow_OnClick(object sender, RoutedEventArgs e)
         {
-            scaleImage.ScaleX = Constants.General.One;
-            scaleImage.ScaleY = Constants.General.One;
+            scaleImage.ScaleX = Constants.General.IntOne;
+            scaleImage.ScaleY = Constants.General.IntOne;
             imgBottle.Width = scrlVwrForImage.ActualWidth - 10;
             imgBottle.Height = scrlVwrForImage.ActualHeight - 10;                    
         }
@@ -54,15 +54,15 @@ namespace MiniatureBottleWPFDesktopClient
             BitmapImage bmp = imgBottle.Source as BitmapImage;
             imgBottle.Height = bmp.Height;
             imgBottle.Width = bmp.Width;
-            scaleImage.ScaleX = Constants.General.One;
-            scaleImage.ScaleY = Constants.General.One;            
+            scaleImage.ScaleX = Constants.General.IntOne;
+            scaleImage.ScaleY = Constants.General.IntOne;            
         }
 
         private void txtCustomZoom_OnEnter(object sender, KeyEventArgs e)
         {            
             if (e.Key == Key.Enter)
             {
-                double customZoomPercentage = Constants.General.Zero;
+                double customZoomPercentage = Constants.General.IntZero;
                 if (double.TryParse(txtCustomZoom.Text, out customZoomPercentage))
                 {
                     customZoomPercentage = double.Parse(txtCustomZoom.Text);
@@ -70,8 +70,8 @@ namespace MiniatureBottleWPFDesktopClient
                 if (customZoomPercentage >= Constants.Image.MinimumZoomPercentage
                     && customZoomPercentage <= Constants.Image.MaximumZoomPercentage)
                 {
-                    double zoomRatio = Constants.General.One * 
-                        (customZoomPercentage / Constants.General.Hundred);
+                    double zoomRatio = Constants.General.IntOne * 
+                        (customZoomPercentage / Constants.General.IntHundred);
                     scaleImage.ScaleX = zoomRatio;
                     scaleImage.ScaleY = zoomRatio;                    
                 }
@@ -110,8 +110,8 @@ namespace MiniatureBottleWPFDesktopClient
             imgBottle.Height = scrlVwrForImage.ActualHeight - 10;                  
             scaleImage.CenterX = imgBottle.ActualWidth / Constants.Image.DivisorForCenterOfImage;
             scaleImage.CenterY = imgBottle.ActualHeight / Constants.Image.DivisorForCenterOfImage;
-            scaleImage.ScaleX = Constants.General.One;
-            scaleImage.ScaleY = Constants.General.One;
+            scaleImage.ScaleX = Constants.General.IntOne;
+            scaleImage.ScaleY = Constants.General.IntOne;
         }
     }
 }

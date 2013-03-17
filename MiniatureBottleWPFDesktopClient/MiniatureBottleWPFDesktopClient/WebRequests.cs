@@ -59,7 +59,8 @@ namespace MiniatureBottleWPFDesktopClient
             }
         }
         
-        public static string SendBottleOrImage(Uri url, string data, string method, string contentType)
+        public static string SendBottleOrImage(Uri url, string data, 
+            string method, string contentType)
         {
             StreamWriter requestWriter;
             HttpWebRequest webRequest = WebRequest.Create(url) as HttpWebRequest;

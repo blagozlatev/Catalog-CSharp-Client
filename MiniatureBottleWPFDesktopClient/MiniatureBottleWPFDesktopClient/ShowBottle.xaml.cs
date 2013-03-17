@@ -52,10 +52,11 @@ namespace MiniatureBottleWPFDesktopClient
         {
             string bottleString = WebRequests.GetSingle(new Uri(Constants.Links.GetBottle + txtBID.Text),
                 Constants.Web.MethodGet, Constants.Web.ContentText);
-            string bottleBase64String = WebRequests.GetSingle(new Uri(Constants.Links.GetImageBase64 + txtBID.Text), 
+            string bottleBase64String = WebRequests.GetSingle
+                (new Uri(Constants.Links.GetImageBase64 + txtBID.Text), 
                  Constants.Web.MethodGet, Constants.Web.ContentBinaryFormData);
 
-            if (bottleBase64String != "0")
+            if (bottleBase64String != Constants.General.StringZero)
             {
                 byte[] imageBytes = Convert.FromBase64String(bottleBase64String);
                 using (MemoryStream ms = new MemoryStream(imageBytes))
@@ -68,7 +69,7 @@ namespace MiniatureBottleWPFDesktopClient
                     imgBottle.Source = bi;
                 }
             }
-            if (bottleString != "0")
+            if (bottleString != Constants.General.StringZero)
             {
                 Bottle b = Bottle.Deserialize(bottleString);
                 lblAge.Content = b.Age;

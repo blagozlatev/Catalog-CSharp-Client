@@ -15,9 +15,11 @@
 
         public static class General
         {
-            public static int Zero { get { return 0; } }
-            public static int One { get { return 1; } }
-            public static int Hundred { get { return 100; } }
+            public static int IntZero { get { return 0; } }
+            public static int IntOne { get { return 1; } }
+            public static int IntHundred { get { return 100; } }
+            public static string StringZero { get { return "0"; } }
+            public static string StringOne { get { return "1"; } }
         }
 
         public static class Web
@@ -31,7 +33,7 @@
         public static class Links
         {
             public static string GetAllBottles { get { return "http://bottlewebapp.apphb.com/Serialized/"; } }
-            public static string GetBottle { get { return "http://bottlewebapp.apphb.com/Serialized/GetBottle/"; } }
+            public static string GetBottle { get { return "http://bottlewebapp.apphb.com/Serialized/Index/"; } }
             public static string GetImageBase64 { get { return "http://bottlewebapp.apphb.com/Serialized/GetImageBase/"; } }
             public static string SendBottle { get { return "http://bottlewebapp.apphb.com/Serialized/Post"; } }
             public static string SendImageBase64 { get { return "http://bottlewebapp.apphb.com/Serialized/PostImage/"; } }
