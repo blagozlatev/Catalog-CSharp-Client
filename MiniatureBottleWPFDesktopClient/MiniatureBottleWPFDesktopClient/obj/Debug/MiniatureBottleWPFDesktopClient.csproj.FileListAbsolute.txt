@@ -55,3 +55,5 @@ D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClie
 D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\bin\Debug\MiniatureBottleWPFDesktopClient.application
 D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\MiniatureBottleWPFDesktopClient.exe.manifest
 D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\MiniatureBottleWPFDesktopClient.application
+D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\AuthQuestion.baml
+D:\Programming\DiplomaThesis\Catalog-CSharp-Client\MiniatureBottleWPFDesktopClient\MiniatureBottleWPFDesktopClient\obj\Debug\AuthQuestion.g.cs

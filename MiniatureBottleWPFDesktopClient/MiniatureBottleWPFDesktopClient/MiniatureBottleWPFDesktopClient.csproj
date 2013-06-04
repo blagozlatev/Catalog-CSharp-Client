@@ -95,6 +95,9 @@
     <Compile Include="AddBottle.xaml.cs">
       <DependentUpon>AddBottle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AuthQuestion.xaml.cs">
+      <DependentUpon>AuthQuestion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImageView.xaml.cs">
       <DependentUpon>ImageView.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
     </Compile>
     <Compile Include="WebRequests.cs" />
     <Page Include="AddBottle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

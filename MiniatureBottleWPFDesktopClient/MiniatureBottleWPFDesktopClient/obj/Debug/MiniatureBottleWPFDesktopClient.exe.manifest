@@ -47,14 +47,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MiniatureBottleWPFDesktopClient.exe" size="45568">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MiniatureBottleWPFDesktopClient.exe" size="48128">
       <assemblyIdentity name="MiniatureBottleWPFDesktopClient" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EU7NuXkt3cPj3MaiB2RbPs79u9ZVDKiKromygSLV3MU=</dsig:DigestValue>
+        <dsig:DigestValue>taMNdydeNBcyyn7XIl0LkxoXHEUskJQyffzwG2rHMos=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

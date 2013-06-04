@@ -32,8 +32,8 @@ namespace MiniatureBottleWPFDesktopClient
     {        
         AddBottle addbtl;
         ShowBottle shbtl;
-        ShowAllBottles shallbtl;
-
+        ShowAllBottles shallbtl;        
+        private Boolean isAuth = false;
         public MainWindow()
         {
             InitializeComponent();            
@@ -41,10 +41,21 @@ namespace MiniatureBottleWPFDesktopClient
 
         private void btnAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            addbtl = new AddBottle();
-            addbtl.mainWindow = this;
-            this.Hide();
-            addbtl.Show();
+            if (isAuth)
+            {
+                addbtl = new AddBottle();
+                addbtl.mainWindow = this;
+                this.Hide();
+                addbtl.Show();
+            }
+            else
+            {
+                AuthQuestion dlg = new AuthQuestion();
+                dlg.Owner = this;
+                dlg.ShowDialog();
+                isAuth = dlg.isAuth;
+                btnAdd_OnClick(sender, e);
+            }
         }
 
         private void btnShow_OnClick(object sender, RoutedEventArgs e)
