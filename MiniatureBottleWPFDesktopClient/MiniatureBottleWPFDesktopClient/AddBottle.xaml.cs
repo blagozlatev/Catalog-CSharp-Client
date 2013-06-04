@@ -129,13 +129,14 @@ namespace MiniatureBottleWPFDesktopClient
                 b.Name = txtName.Text;
                 b.Note = txtNote.Text;
                 b.Shape = txtShape.Text;
-                b.Shell = txtShell.Text;
-                txtBrowse.Text = WebRequests.SendBottleOrImage(new Uri(Constants.Links.SendBottle), Bottle.Serialize(b),
-                Constants.Web.MethodPost, Constants.Web.ContentText);
+                b.Shell = txtShell.Text;                
                 byte[] requestBytes = File.ReadAllBytes(txtBrowse.Text);
+                WebRequests.SendBottleOrImage(new Uri(Constants.Links.SendBottle), Bottle.Serialize(b),
+                Constants.Web.MethodPost, Constants.Web.ContentText);
                 txtNote.Text = WebRequests.SendBottleOrImage(new Uri(Constants.Links.SendImageBase64 + txtID.Text),
                 Convert.ToBase64String(requestBytes, Base64FormattingOptions.None)
                 , Constants.Web.MethodPost, Constants.Web.ContentBinaryFormData);
+                //txtBrowse.Text =                 
             }
             catch (Exception ex)
             {
